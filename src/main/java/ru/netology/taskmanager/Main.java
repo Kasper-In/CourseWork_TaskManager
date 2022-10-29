@@ -1,4 +1,4 @@
-package ru.netology.javacore;
+package ru.netology.taskmanager;
 
 import java.io.IOException;
 
