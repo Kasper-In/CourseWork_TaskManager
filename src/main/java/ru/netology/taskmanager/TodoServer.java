@@ -8,7 +8,7 @@ import java.net.Socket;
 
 public class TodoServer {
     private final int PORT;
-    private final Todos todos;
+    private Todos todos;
 
     public TodoServer(int port, Todos todos) {
         this.PORT = port;
@@ -26,7 +26,7 @@ public class TodoServer {
                     ){
                     String request = in.readLine();
                     OperTask operTask = gson.fromJson(request, OperTask.class);
-                    switch (operTask.getTypeOper()){
+                    switch (operTask.getType()){
                         case ADD:
                             todos.addTask(operTask.getTask());
                             break;
@@ -34,7 +34,7 @@ public class TodoServer {
                             todos.removeTask(operTask.getTask());
                             break;
                         default:
-                            System.out.println("Неизвестная операция: " + operTask.getTypeOper());
+                            System.out.println("Неизвестная операция: " + operTask.getType());
                     }
                     String answer = todos.getAllTasks();
                     out.println(answer);

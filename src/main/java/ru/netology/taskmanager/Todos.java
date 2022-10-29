@@ -22,8 +22,9 @@ public class Todos {
 
     public String getAllTasks() {
         StringBuilder sb = new StringBuilder();
-        listTodos.stream().sorted().forEach(todo -> sb.append(todo).append("\n"));
-        return sb.toString();
+        listTodos.stream().sorted().forEach(todo -> sb.append(todo).append(" "));
+        String s = sb.toString();
+        return s;//sb.toString();
     }
 
 }

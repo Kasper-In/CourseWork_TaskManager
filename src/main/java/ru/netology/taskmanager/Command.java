@@ -1,5 +1,5 @@
 package ru.netology.taskmanager;
 
-public enum TypeOper {
+public enum Command {
     ADD, REMOVE, RESTORE
 }

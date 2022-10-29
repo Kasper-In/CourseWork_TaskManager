@@ -1,16 +1,16 @@
 package ru.netology.taskmanager;
 
 public class OperTask {
-    private TypeOper typeOper;
+    private Command type;
     private String task;
 
-    public OperTask(TypeOper typeOper, String task) {
-        this.typeOper = typeOper;
+    public OperTask(Command type, String task) {
+        this.type = type;
         this.task = task;
     }
 
-    public TypeOper getTypeOper() {
-        return typeOper;
+    public Command getType() {
+        return type;
     }
 
     public String getTask() {
