@@ -26,24 +26,24 @@ public class Client {
                  BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))
             ) {
                 System.out.println("Введи номер задачи и ее название через пробел:"
-                        + "\n 1 - добавить задачу; 2 - Удалить задачу");
+                        + "\n 1 - добавить задачу; 2 - Удалить задачу; 3 - Отменить последнее действие");
                 String input = sc.nextLine();
                 if (input.equals("end")) {
                     out.println("end");
                     break;
                 } else {
                     String[] request = input.split(" ", 2);
-                    if (request.length < 2) {
-                        System.out.println("Неверно введены данные");
-                    } else {
-                        String numberCommand = request[0];
-                        String task = request[1];
-                        commandTaks = new CommandTaks(toCommand(numberCommand), task);
-                        String output = gson.toJson(commandTaks);
-                        out.println(output);
-                        String answerServer = in.readLine();
-                        System.out.println(answerServer.replace("#", "\n"));
+                    String numberCommand = request[0];
+                    String task = null;
+                    if (request.length > 1) {
+                        task = request[1];
                     }
+                    commandTaks = new CommandTaks(toCommand(numberCommand), task);
+                    String output = gson.toJson(commandTaks);
+                    out.println(output);
+                    String answerServer = in.readLine();
+                    System.out.println(answerServer.replace("#", "\n"));
+
                 }
             } catch (IOException e) {
                 System.out.println(e.getMessage());

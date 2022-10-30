@@ -4,21 +4,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Todos {
-    private List<String> listTodos = new ArrayList<>();
-    private final int MAX_TASK = 7;
+    protected List<String> listTodos = new ArrayList<>();
+    protected TodosHist todosHist = new TodosHist();
+    protected final int MAX_TASK = 7;
 
 
-    public boolean addTask(String task) {
+    public boolean addTask(String task, boolean isNeedHist) {
         if (listTodos.size() < MAX_TASK) {
             listTodos.add(task);
+            if (isNeedHist) {
+                todosHist.addHist(new CommandTaks(Command.ADD, task));
+            }
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean removeTask(String task) {
-        return listTodos.remove(task);
+    public boolean removeTask(String task, boolean isNeedHist) {
+        if (listTodos.remove(task)) {
+            if (isNeedHist) {
+                todosHist.addHist(new CommandTaks(Command.REMOVE, task));
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void restoreTask() {
+        CommandTaks lastCommandTask = todosHist.lastHist();
+        if (lastCommandTask.getType() == Command.ADD) {
+            removeTask(lastCommandTask.getTask(), false);
+        } else {
+            addTask(lastCommandTask.getTask(), false);
+        }
+        todosHist.removeLastHist();
     }
 
     public String getAllTasks() {

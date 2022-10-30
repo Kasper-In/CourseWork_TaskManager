@@ -1,7 +1,5 @@
 package ru.netology.taskmanager.datas;
 
-import ru.netology.taskmanager.datas.Command;
-
 public class CommandTaks {
     private Command type;
     private String task;

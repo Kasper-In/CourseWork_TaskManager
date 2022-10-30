@@ -31,14 +31,17 @@ public class TodoServer {
                         CommandTaks commandTaks = gson.fromJson(request, CommandTaks.class);
                         switch (commandTaks.getType()) {
                             case ADD:
-                                if (!todos.addTask(commandTaks.getTask())) {
+                                if (!todos.addTask(commandTaks.getTask(), true)) {
                                     out.println("Вы превысили максимальное количество задач! \n");
                                 }
                                 break;
                             case REMOVE:
-                                if (!todos.removeTask(commandTaks.getTask())) {
+                                if (!todos.removeTask(commandTaks.getTask(), true)) {
                                     out.println("Нет такой задачи в списке \n");
                                 }
+                                break;
+                            case RESTORE:
+                                todos.restoreTask();
                                 break;
                             default:
                                 out.println("Неизвестная операция");
