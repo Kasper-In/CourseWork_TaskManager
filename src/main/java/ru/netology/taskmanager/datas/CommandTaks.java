@@ -1,10 +1,12 @@
-package ru.netology.taskmanager;
+package ru.netology.taskmanager.datas;
 
-public class OperTask {
+import ru.netology.taskmanager.datas.Command;
+
+public class CommandTaks {
     private Command type;
     private String task;
 
-    public OperTask(Command type, String task) {
+    public CommandTaks(Command type, String task) {
         this.type = type;
         this.task = task;
     }
