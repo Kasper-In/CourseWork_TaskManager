@@ -44,9 +44,14 @@ public class Todos {
 
     public String getAllTasks() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Список задач:").append("#");
         listTodos.stream().sorted().forEach(todo -> sb.append(todo).append("#"));
         return sb.toString();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        listTodos.forEach(todo -> sb.append(todo).append(" "));
+        return sb.toString().trim();
+    }
 }
