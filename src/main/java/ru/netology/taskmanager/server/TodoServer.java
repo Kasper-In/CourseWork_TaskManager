@@ -28,6 +28,9 @@ public class TodoServer {
                 ) {
                     String request = in.readLine();
                     if (request != null) {
+                        if (request.equals("end")){
+                            continue;
+                        }
                         CommandTaks commandTaks = gson.fromJson(request, CommandTaks.class);
                         switch (commandTaks.getType()) {
                             case ADD:

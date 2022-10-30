@@ -30,6 +30,7 @@ public class Client {
                 String input = sc.nextLine();
                 if (input.equals("end")) {
                     out.println("end");
+                    System.out.println("Всего доброго");
                     break;
                 } else {
                     String[] request = input.split(" ", 2);
