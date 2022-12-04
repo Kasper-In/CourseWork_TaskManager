@@ -27,7 +27,7 @@ class TodosTest {
     @DisplayName("Проверка добавления в список (без сортировки)")
     void addTaskWithoutSort() {
         Assertions.assertTrue(todos.addTask("7", true));
-        Assertions.assertEquals("6 5 4 3 2 1 7", todos.toString());
+        Assertions.assertEquals("6 5 45 3 2 1 7", todos.toString());
     }
 
     @Test
